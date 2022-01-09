@@ -1,0 +1,168 @@
+<!-- ======= Checkout Section ======= -->
+<section id="Checkout" class="Checkout">
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-8 entries">
+
+        <div class="entry" *ngFor="let cartcheckout of cartAndItems.cartItems">
+          <div class="entry-details  d-flex flex-row">
+            <div class="d-flex flex-column my-cloumn1">
+              <div class="entry-img">
+                <img [src]="cartcheckout.productAndDiscount.imageUrl" width=300px height=" auto " class="img-fluid ">
+              </div>
+            </div>
+            <div class="my-cloumn2 d-flex flex-column align-items-start ">
+              <h5 class="entry-title ">{{cartcheckout.productAndDiscount.productDescription}}</h5>
+              <div class="entry-content ">
+                <h4 class="item-details ">Category: {{cartcheckout.productAndDiscount.productCategory}}
+                </h4><br>
+                <h4 class="item-details ">Available: {{cartcheckout.productAndDiscount.productQty}}</h4>
+                <br>
+                <div class=" contact-shop ml-auto d-flex flex-row align-item-start ">
+                  <button class="remove " (click)="remove(cartcheckout.cartItemId)">Remove</button>
+                </div>
+              </div>
+              <div class="entry-meta ">
+              </div>
+            </div>
+            <div class="entry-item-cost d-flex flex-column align-item-end my-cloumn3 active ">
+              <div class="contact-shop ml-auto d-flex flex-row ">
+                <h6>Sold by Rev-Tech.com</h6>
+              </div>
+              <div class="d-flex flex-row align-items-start ">
+
+                <input type="number" class="addItem " min="1" [max]="cartcheckout.productAndDiscount.productQty"
+                  name="cartcheckout.cartQty" [value]="cartcheckout.cartQty"
+                  (change)="changeQuantity(cartcheckout, $event.target)"> <br>
+
+                <!-- <select class="form-select " aria-label="Default select example" -->
+                <!-- (change)="changeQuantity(cartcheckout, $event.target)"> -->
+                <!-- <option id="itemQty" name="itemQty" selected>{{cartcheckout.cartQty}}</option> -->
+                <!-- <ng-container *ngFor="let itemN of itemNum"> -->
+                <!-- <option *ngIf="itemN <= cartcheckout.productAndDiscount.productQty" [value]="itemN"> -->
+                <!-- {{itemN}} -->
+                <!-- </option> -->
+                <!-- </ng-container> -->
+                <!-- </select> -->
+
+              </div>
+              <h6 class="d-flex flex-row item-sale-price align-items-end ml-auto "
+                *ngIf=" cartcheckout.productAndDiscount.discountPercentage < 0.01 ">
+                ${{calculateTotalCost(cartcheckout, calculateSingleItemCost) | number :'1.2-2'}} </h6>
+              <h6 class="d-flex flex-row item-sale-price align-items-end ml-auto "
+                *ngIf=" cartcheckout.productAndDiscount.discountPercentage > 0.01 ">
+                ${{calculateTotalCost(cartcheckout, calculateDiscountedItemCost) | number :'1.2-2'}} </h6>
+
+              <h6 class="item-old-price" *ngIf=" cartcheckout.productAndDiscount.discountPercentage > 0.01 ">
+                $ {{calculateTotalCost(cartcheckout, calculateSingleItemCost) | number :'1.2-2'}}</h6><br>
+              <h6 class="item-old-price" *ngIf=" cartcheckout.productAndDiscount.discountPercentage < 1.0 "
+                [ngStyle]="{'visibility': 'hidden'}">
+                $ {{cartcheckout.productAndDiscount.productCost}}</h6><br>
+
+
+              <div class="item-decrription " *ngIf="cartcheckout.productAndDiscount.discountPercentage > 0.01 ">
+                {{"Discounted for: " + cartcheckout.productAndDiscount.discountDescription }}</div> <br>
+
+              <div class="item-decrription " *ngIf="cartcheckout.productAndDiscount.discountPercentage < 0.01"
+                [ngStyle]="{'visibility': 'hidden'}">
+                {{cartcheckout.productAndDiscount.discountDescription }}</div> <br>
+
+              <h6 class="item-sale " *ngIf=" cartcheckout.productAndDiscount.discountPercentage < 0.01 "
+                [ngStyle]="{'visibility': 'hidden'}">
+              </h6>
+
+              <h6 class="item-sale " *ngIf=" cartcheckout.productAndDiscount.discountPercentage > 0.01 ">
+                Sale: {{cartcheckout.productAndDiscount.discountPercentage * 100}}%</h6>
+            </div>
+          </div>
+        </div>
+        <!-- End Checkout entry -->
+      </div>
+      <!-- ---------------------------------------------------------------------------------------- -->
+      <div class="col-lg-4 ">
+        <div class="sidebar ">
+
+          <h3 class="sidebar-title ">How you'll Pay</h3>
+          <div class="sidebar-item categories ">
+
+            <div class="form-check ">
+              <input class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios1" value="option1"
+                checked>
+
+              <img src="../../assets/image/icons8-visa-48.png " width="30px " hight="auto " alt=" "><label
+                class="form-check-label " for="exampleRadios1 "></label>
+              <img src="../../assets/image/icons8-mastercard-48.png " width="30px " hight="auto " alt=" "><label
+                class="form-check-label " for="exampleRadios1 "></label>
+              <img src="../../assets/image/icons8-american-express-48.png " width="30px " hight="auto " alt=" "><label
+                class="form-check-label " for="exampleRadios1 "></label>
+              <img src="../../assets/image/discover.png " width="50px " hight="auto " alt=" "><label
+                class="form-check-label " for="exampleRadios1 "></label>
+            </div>
+            <div class="form-check ">
+              <input class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios1" value="option1"
+                checked>
+              <img src="../../assets/image/icons8-paypal-48.png " width="30px " hight="auto " alt=" "><label
+                class="form-check-label " for="exampleRadios1 "></label>
+            </div>
+          </div>
+          <!-- ----------------------------------------------- -->
+          <div class="total-items d-flex flex-row ">
+            <h6 class="item-title d-flex flex-row mr-auto ">item(s) total</h6><br>
+            <h6 class="item-amount d-flex flex-row ml-auto ">${{getItemsTotal() | number:'1.2-2' }}</h6>
+          </div>
+          <div class="yousaved d-flex flex-row ">
+            <h6 class="yousaved d-flex flex-row mr-auto  ">You saved</h6><br>
+            <h6 class="item-yousaved d-flex flex-row ml-auto  ">${{getUserSave() | number:'1.2-2' }}</h6>
+          </div>
+
+          <!-- ------------------------------------------------- -->
+          <!-- <div class="shop-discount d-flex flex-row "> -->
+          <!-- <h6 class="shop-discount-title d-flex flex-row mr-auto ">Shop discount</h6> -->
+          <!-- <h6 class="shop-discount-amount d-flex d-flex flex-row ml-auto ">-$17.00</h6> -->
+          <!-- </div> -->
+          <!-- -------------------------------------------------- -->
+          <hr>
+          <!-- ------------------------------------------------- -->
+          <!-- <div class="subtotal d-flex flex-row "> -->
+          <!-- <h6 class="subtotal-title d-flex flex-row mr-auto ">Subtotal</h6> -->
+          <!-- <h6 class="subtotal-amount d-flex d-flex flex-row ml-auto ">-$85.00</h6> -->
+          <!-- </div> -->
+          <!-- ------------------------------------------------- -->
+          <div class="Shipping d-flex flex-row ">
+            <h6 class="Shipping-title d-flex flex-row mr-auto ">Shipping</h6>
+            <h6 class="Shipping-state d-flex d-flex flex-row ml-auto ">Free</h6>
+          </div>
+
+          <div class="sidebar-item recent-posts ">
+            <button type="button " class="btn btn-secondary btn-lg btn-block " (click)="proceedToCheckout()">Proceed to
+              checkout</button>
+            <!-- ---------------------------------------------------- -->
+            <div class="modal" tabindex="-1" role="dialog" [ngStyle]="{'display':displayStyle}">
+              <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                  <div class="modal-header">
+                    <h4 class="modal-title">Rev-Tech</h4>
+                  </div>
+                  <div class="modal-body">
+                    <p>Thanks for shoping with Rev-Tech</p>
+                  </div>
+                  <div class="modal-footer">
+                  </div>
+                </div>
+              </div>
+            </div>
+
+
+            <!-- --------------------------------------------------------- -->
+
+
+
+          </div>
+        </div>
+        <!-- End sidebar -->
+      </div>
+      <!-- End Checkout sidebar -->
+    </div>
+  </div>
+</section>
+<!-- End Checkout Section -->

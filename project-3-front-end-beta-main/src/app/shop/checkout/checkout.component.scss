@@ -1,0 +1,235 @@
+/*--------------------------------------------------------------
+# General
+--------------------------------------------------------------*/
+
+body {
+  font-family: "Open Sans", sans-serif;
+  color: #313030;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+a:hover {
+  color: #ff7e54;
+  text-decoration: none;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: "Raleway", sans-serif;
+}
+
+.clear {
+  clear: both;
+}
+
+
+/*--------------------------------------------------------------
+# Checkout
+--------------------------------------------------------------*/
+
+.Checkout {
+  margin-top: 50px;
+  padding: 20px 0;
+}
+
+.Checkout .entry {
+  padding: 30px;
+  margin-bottom: 60px;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.1);
+}
+
+.Checkout .entry .my-cloumn1 {
+  width: 30%;
+  /* border: solid 2px steelblue; */
+}
+
+.Checkout .entry .my-cloumn2 {
+  width: 40%;
+  /* border: solid 2px rgb(11, 182, 34); */
+  margin: 0 30px;
+}
+
+.Checkout .entry .my-cloumn2 .remove {
+  color: black;
+}
+
+.Checkout .entry .my-cloumn3 {
+  width: 30%;
+  text-align: right;
+  /* border: solid 2px rgb(182, 11, 174); */
+  text-align: right;
+}
+
+.Checkout .entry .entry-img {
+  max-height: 440px;
+  margin: -30px -30px 20px -30px;
+  overflow: hidden;
+  align-content: flex-start;
+}
+
+.Checkout .entry .entry-details .my-cloumn2 h5 {
+  font-size: 17px;
+  padding: 0;
+  margin: 0 0 20px 0;
+}
+
+.Checkout .entry .entry-details .my-cloumn2 .entry-content h4:first-child {
+  margin-top: 20px;
+  font-size: 15px;
+}
+
+.Checkout .entry .entry-details .my-cloumn2 .entry-content h4 {
+  font-size: 15px;
+  margin: 0;
+  padding: 0;
+}
+
+.Checkout .entry .entry-content h3 {
+  font-size: 22px;
+  margin-top: 30px;
+  font-weight: bold;
+}
+
+.Checkout .entry .entry-content .contact-shop .remove
+{
+  color: blue;
+  font-weight: normal;
+  background: none;
+  border: none;
+  padding: 0;
+  cursor: pointer;
+  outline: none;
+}
+
+.Checkout .entry .entry-estimate-deliver .estimate-deliver {
+  margin-top: 50px;
+  font-size: 15px;
+  text-align: right;
+}
+
+.Checkout .entry-details .entry-item-cost .contact-shop h6 {
+  font-size: 12px;
+  color: rgb(110, 111, 112);
+}
+
+.Checkout .entry .entry-details .entry-item-cost .addItem {
+  width: 67px;
+  height: 30px;
+}
+
+.Checkout .entry-item-cost .item-sale-price h6 {
+  margin-top: 15px;
+  font-size: 15px;
+  font-weight: bold;
+}
+
+.Checkout .entry-details .entry-item-cost .item-old-price {
+  color: darkgrey;
+  font-size: 12px;
+  padding: 0;
+  margin: 0;
+  text-decoration: line-through;
+}
+
+.Checkout .entry-item-cost .item-decrription {
+  font-size: 15px;
+  padding: 0;
+  margin: 0;
+  color: red;
+}
+
+.Checkout .entry-item-cost .item-sale {
+  font-size: 15px;
+  padding: 0;
+  margin: 0;
+}
+
+
+/*--------------------------------------------------------------
+# Sidebar
+--------------------------------------------------------------*/
+
+.Checkout .sidebar {
+  padding: 30px;
+  margin: 0 0 60px 20px;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.1);
+}
+
+.Checkout .sidebar .sidebar-title {
+  font-size: 20px;
+  font-weight: 700;
+  padding: 0 0 0 0;
+  margin: 0 0 15px 0;
+  color: #473d3a;
+  position: relative;
+}
+
+.Checkout .sidebar .sidebar-item {
+  margin-bottom: 30px;
+}
+
+.sidebar .shop-discount .shop-discount-title {
+  font-size: 16px;
+  font-weight: bold;
+}
+
+.sidebar .shop-discount .shop-discount-amount {
+  font-size: 15px;
+}
+
+.sidebar .total-items .item-title {
+  font-size: 16px;
+  font-weight: bold;
+  align-items: flex-start;
+}
+
+.sidebar .total-items .item-amount {
+  font-size: 15px;
+  align-items: flex-end;
+}
+
+.sidebar .yousaved{
+  font-size: 12px;
+  font-weight: lighter;
+}
+
+.sidebar .yousaved .item-yousaved {
+    font-size: 12px;
+  font-weight: lighter;
+color: rgb(60, 63, 253);
+}
+
+.sidebar .subtotal .subtotal-title {
+  font-size: 16px;
+  font-weight: bold;
+  align-items: flex-start;
+}
+
+.sidebar .subtotal .subtotal-amount {
+  font-size: 15px;
+  align-items: flex-end;
+}
+
+.sidebar .Shipping .Shipping-title {
+  font-size: 16px;
+  font-weight: bold;
+  align-items: flex-start;
+}
+
+.sidebar .Shipping .Shipping-state {
+  font-size: 15px;
+  align-items: flex-end;
+  color: rgb(152, 226, 32);
+}
+
+.form-check-input {
+  margin-top: 8px;
+}
+

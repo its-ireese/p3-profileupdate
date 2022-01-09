@@ -1,0 +1,98 @@
+<div class="search-container">
+  <form action="#" method="" id="search_form">
+      <div class="sb-example-1">
+          <div class="search">
+              <input type="text" class="searchTerm" size="100" maxlength="150" name="search_text"
+                  placeholder="What are you looking for?" id="search_text" style="color: black;" [(ngModel)]="searchQuery" />
+              <button type="submit" class="searchButton" (click)="searchStore()"><i class="fa fa-search"
+                  style="color: white;"></i></button>
+          </div>
+      </div>
+  </form>
+</div>
+
+<!-- The sidebar -->
+<div class="sidebar">
+  <a (click)="unfilter()" id="filterremove" class="active">Remove Filter</a>
+  <a (click)="filterByCategory('Phones')">Phones</a>
+  <a (click)="filterByCategory('Laptops')">Laptops</a>
+  <a (click)="filterByCategory('Gaming')">Gaming Consoles</a>
+  <a (click)="filterByDiscount()">Discounted Items</a>
+</div>
+
+<!-- Page content -->
+<div class='container-fluid'>
+  <div class="content">
+    <div class="card-deck" *ngIf="returnQuery()">
+      <div class="wrapper">
+      <div class="card" *ngFor="let row of searchedProducts(returnQuery())" >
+          <img id="image-size" class="card-img-top" src="{{row.imageUrl}}" width="auto" height="auto" />
+          <div class="card-body">
+              <p class="card-text"></p>
+          </div>
+          <div class="card-footer">
+              <h5 class="card-title font-weight-bold" class="parLength"> {{row.productName}}</h5>
+              <p class="card-text">{{row.productCost | currency}}</p>
+              <p class="card-text" class="parLength">{{row.productDescription}}</p>
+              <p><button class="btn-danger" (click)="goToProduct(row.productId)">View Details</button></p>
+              <small class="text-muted">{{row.productSku}}</small>
+              </div>
+          </div>
+      </div>
+    </div>
+    <div class="card-deck" *ngIf="filterFlag">
+      <div class="wrapper">
+      <div class="card" *ngFor="let row of filteredProducts" >
+          <img id="image-size" class="card-img-top" src="{{row.imageUrl}}" width="auto" height="auto" />
+          <div class="card-body">
+              <p class="card-text"></p>
+          </div>
+          <div class="card-footer">
+              <h5 class="card-title font-weight-bold" class="parLength"> {{row.productName}}</h5>
+              <p class="card-text">{{row.productCost | currency}}</p>
+              <p class="card-text" class="parLength">{{row.productDescription}}</p>
+              <p><button class="btn-danger" (click)="goToProduct(row.productId)">View Details</button></p>
+              <small class="text-muted">{{row.productSku}}</small>
+              </div>
+          </div>
+      </div>
+    </div>
+    <div class="card-deck" *ngIf="!hideFlag">
+      <div class="wrapper">
+        <div class="card" *ngFor="let row of allProducts">
+          <img id="image-size" class="card-img-top" src="{{row.imageUrl}}" width="auto" height="auto" />
+          <div class="card-body">
+            <p class="card-text"></p>
+          </div>
+          <div class="card-footer">
+            <h5 class="card-title font-weight-bold" class="parLength"> {{row.productName}}</h5>
+            <p class="card-text">{{row.productCost | currency}}</p>
+            <p class="card-text" class="parLength">{{row.productDescription}}</p>
+            <p><button class="btn btn-danger" (click)="goToProduct(row.productId)">View Details</button></p>
+
+            <small class="text-muted">{{row.productSku}}</small>
+          </div>
+        </div>
+      </div>
+      &nbsp;
+      <div class="wrapper">
+        <div class="card" *ngFor="let row of allDiscountProducts">
+          <img id="image-size" class="card-img-top" src="{{row.imageUrl}}" width="auto" height="auto" />
+          <div class="card-body">
+            <p class="card-text"></p>
+          </div>
+          <div class="card-footer">
+            <h5 class="card-title font-weight-bold" class="parLength"> {{row.productName}}</h5>
+            <p class="card-text">{{row.productCost-row.productCost*(row.discountPercentage/100) | currency }}
+              <s>{{row.productCost |
+                currency}}</s>
+            </p>
+            <p class="card-text" class="parLength">{{row.productDescription}}</p>
+            <p><button class="btn btn-danger" (click)="goToProduct(row.productId)">View Details</button></p>
+            <small class="text-muted">{{row.productSku}}</small>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
