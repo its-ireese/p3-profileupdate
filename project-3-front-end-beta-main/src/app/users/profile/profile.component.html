@@ -50,31 +50,75 @@
                                 {{currentUser.user_id}} 
                               <!--  {{editUser.user_id}} -->
                             </td>
+                            <td>
+                            <div id="myDIV" class="form-group">
+                                <label for="user_id">User ID : {{currentUser.user_id}}</label>
+                              
+                                 <!--   {{currentUser.user_id}} -->
+                             </div>
+                            </td>
+                            <td>
+                                <button 
+                                    type="button" 
+                                    class="btn btn-primary small"
+                                    (click)="updatedUser()">
+                                    <span class="material-icons">edit</span>
+                                </button>
+                            </td>
                         </tr>
                         <tr>    
                             <td>
                                 <strong>
-                                    <span class="glyphicon glyphicon-user  text-primary"></span>    
+                                    <span class="glyphicon glyphicon-user text-primary"></span>    
                                     First Name: 
                                                 
                                 </strong>
                             </td>
                             <td class="text-primary">
-                                {{currentUser.first_name}}
-                              <!--  {{editUser.first_name}}  
-                                {{mainUser.first_name}} 
-                                {{first_name}}   -->
+                                {{currentUser.first_name}} 
+                               <!-- {{editUser.first_name}} --> 
+                               <!-- {{mainUser.first_name}} -->
+                               <!-- {{first_name}}   -->
                             </td>
+                            <td>
+                               
+                                <div class="form-group">
+                                    <label for="first_name">First Name</label>
+                                    <input type="text" 
+                                            class="form-control" 
+                                            id="first_name"  
+                                            name="first_name"
+                                            placeholder={{currentUser.first_name}}
+                                            [(ngModel)]="editUser.first_name">
+                                           
+                                
+                                </div>
+                            </td>
+                            
+                               
+                            
+                            
                         </tr>
                         <tr>        
                             <td>
                                 <strong>
                                     <span class="glyphicon glyphicon-cloud text-primary"></span>  
-                                    Last Name :                                               
+                                    Last Name:                                               
                                 </strong>
                             </td>
                             <td class="text-primary">
                                 {{currentUser.last_name}}
+                            </td>
+                            <td>
+                                <div class="form-group">
+                                    <label for="last_name">Last Name</label>
+                                    <input type="text" 
+                                            class="form-control" 
+                                            id="last_name"  
+                                            name="last_name"
+                                            placeholder={{currentUser.last_name}}
+                                            [(ngModel)]="editUser.last_name">
+                              </div>
                             </td>
                         </tr>
     
@@ -88,6 +132,17 @@
                             <td class="text-primary">
                                 {{currentUser.username}} 
                             </td>
+                            <td>
+                                <div class="form-group">
+                                    <label for="username">Username</label>
+                                    <input type="text" 
+                                            class="form-control" 
+                                            id="username"  
+                                            name="username"
+                                            placeholder={{currentUser.username}}
+                                            [(ngModel)]="editUser.username">
+                              </div>
+                            </td>
                         </tr>
                         <tr>        
                             <td>
@@ -98,6 +153,17 @@
                             </td>
                             <td class="text-primary">
                                 {{currentUser.email}}
+                            </td>
+                            <td>
+                                <div class="form-group">
+                                    <label for="email">Email</label>
+                                    <input type="text" 
+                                            class="form-control" 
+                                            id="email"  
+                                            name="email"
+                                            placeholder={{currentUser.email}}
+                                            [(ngModel)]="editUser.email">
+                              </div>
                             </td>
                         </tr>     
                         <tr>        
@@ -110,6 +176,17 @@
                             <td class="text-primary">
                                 {{currentUser.address}}
                             </td>
+                            <td>
+                                <div class="form-group">
+                                    <label for="address">Address</label>
+                                    <input type="text" 
+                                            class="form-control" 
+                                            id="address"  
+                                            name="address"
+                                            placeholder={{currentUser.address}}
+                                            [(ngModel)]="editUser.address">
+                              </div>
+                            </td>
                         </tr>  
                         <tr>        
                             <td>
@@ -121,6 +198,41 @@
                             <td class="text-primary">
                                 {{currentUser.contact}}
                             </td>
+                            <td>
+                                <div class="form-group">
+                                    <label for="contact">Contact Number</label>
+                                    <input type="text" 
+                                            class="form-control" 
+                                            id="contact"  
+                                            name="contact"
+                                            placeholder={{currentUser.contact}}
+                                            [(ngModel)]="editUser.contact">
+                           </div>
+                            </td>
+
+                            <tr>        
+                                <td>
+                                    <strong>
+                                        <span class="glyphicon glyphicon-envelope text-primary"></span> 
+                                        Password: 
+                                    </strong>
+                                </td>
+                                <td class="text-primary">Confirm Password
+                                </td>
+                                <td>
+                                    <div class="form-group">
+                                        <label for="password">Password</label>
+                                    <input type="password" 
+                                    class="form-control" 
+                                    id="password"  
+                                    name="password"
+                                    placeholder={{currentUser.password}}
+                                    [(ngModel)]="editUser.password"> 
+                               </div>
+                                </td>
+
+
+                          
                         </tr> 
                                      
                     </tbody>
@@ -130,19 +242,22 @@
         </div>
     </div>
     </div>  
+    <button
+               type="submit" 
+               class="btn btn-primary mb-2">Update</button>
 
-    <div class="card mt-5">
+  <!-- <div class="card mt-5">
         <div>
             <button 
                   type="submit" 
                   class="btn btn-primary mr-2"
                   (click)="toggleAdd()" 
                   >Edit Profile</button>
-          </div>
+          </div> -->
      <div *ngIf="flag" > 
-         <!-- <div> -->
-          <form #updateForm="ngForm" class="form-inline tm-5" (submit)="updatedUser()">
-               <div id="myDIV" class="form-group">
+         
+       <!--  <form #updateForm="ngForm" class="form-inline tm-5" (submit)="updatedUser()">
+              <div id="myDIV" class="form-group">
                  <label for="user_id">User ID :</label>
                  <input type="text" 
                  class="form-control" 
@@ -150,7 +265,7 @@
                  name="user_id"
                  placeholder={{currentUser.user_id}}
                  [(ngModel)]="editUser.user_id" > 
-                  <!--   {{currentUser.user_id}} -->
+                    {{currentUser.user_id}}
                </div>
                <div class="form-group">
                      <label for="first_name">First Name</label>
@@ -189,7 +304,7 @@
                      [(ngModel)]="editUser.password"> 
 
                       <!-- {{ editUser.password }} -->
-               </div> 
+         <!--     </div> 
                <div class="form-group">
                      <label for="username">Username</label>
                      <input type="text" 
@@ -217,11 +332,13 @@
                                 placeholder={{currentUser.contact}}
                                 [(ngModel)]="editUser.contact">
                </div>
+
+            
                <button
                type="submit" 
                class="btn btn-primary mb-2">Update</button>
            </form>
          </div>
 
-          
-             </div>
+       
+            </div>  -->
