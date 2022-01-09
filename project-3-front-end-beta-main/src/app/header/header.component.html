@@ -30,7 +30,7 @@
 <img src="https://i.postimg.cc/xdm3qnyD/Picture1.png" scale="0" width="10%">
 <div class="topnav">
     <a href="/product">Store</a>
-    <a href="/profile" class="topnav" *ngIf="isLoggedIn || showAdmin" id="profile">Profile</a>
+    <a href="/profile" class="topnav" *ngIf="isLoggedIn" id="profile">Profile</a>
     <a href="/admin" class="nav-link" *ngIf="showAdmin">Manage Store</a>
     <div class="topnav-right">
         <a href="/login" class="topnav-right" id="profile" *ngIf="!isLoggedIn">Hello, {{first_name || "sign in"}}</a>

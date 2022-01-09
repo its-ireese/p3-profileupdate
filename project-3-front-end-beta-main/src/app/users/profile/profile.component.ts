@@ -106,8 +106,8 @@ export class ProfileComponent implements OnInit {
     this.userService.updateUserService(this.editUser).subscribe(
       (response) => {
       this.currentUser = response
-     // this.router.navigate(['profile']);
-    //  this.reloadPage();        
+      
+     // this.reloadPage();        
       console.log(response);
       },
     (error)=> {
@@ -116,15 +116,16 @@ export class ProfileComponent implements OnInit {
     );
   }
 
-  /*reloadPage(): void{
+ /* reloadPage(): void{
     window.location.reload();}*/
-    /* myFunction() {
-      var x = document.getElementById("myDIV");
-      if (x.style.display === "none") {
-        x.style.display = "block";
-      } else {
-        x.style.display = "none";
-      }
+
+
+    // myFunction() {
+    //   var x = document.getElementById("myDIV");
+    //   if (x.style.display === "none") {
+    //     x.style.display = "block";
+    //   } else {
+    //     x.style.display = "none";
+    //   }
     }
-    */
-}
+    
