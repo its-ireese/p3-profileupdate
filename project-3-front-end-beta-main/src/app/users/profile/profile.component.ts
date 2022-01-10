@@ -12,6 +12,7 @@ import { UserService } from 'src/app/services/user.service';
 export class ProfileComponent implements OnInit {
 
   flag: boolean = false;
+  
   mainUser: User = {
     user_id: 0,
     email: '',
@@ -54,6 +55,8 @@ export class ProfileComponent implements OnInit {
   constructor(private token: TokenStorageService, private userService: UserService) { }
 
   ngOnInit(): void {
+   
+
     this.isLoggedIn = !!this.token.getToken();
     if (this.token.getToken()) {
       this.isLoggedIn = true;
@@ -103,11 +106,13 @@ export class ProfileComponent implements OnInit {
 
   updatedUser(){
     console.log(this.editUser)
+    this.editUser.user_id = this.currentUser.user_id;
+   // this.editUser.password = this.currentUser.password;
     this.userService.updateUserService(this.editUser).subscribe(
       (response) => {
-      this.currentUser = response
-      
-     // this.reloadPage();        
+     this.currentUser = response
+      //this.mainUser = response
+     //this.reloadPage();        
       console.log(response);
       },
     (error)=> {
@@ -116,16 +121,8 @@ export class ProfileComponent implements OnInit {
     );
   }
 
- /* reloadPage(): void{
-    window.location.reload();}*/
-
-
-    // myFunction() {
-    //   var x = document.getElementById("myDIV");
-    //   if (x.style.display === "none") {
-    //     x.style.display = "block";
-    //   } else {
-    //     x.style.display = "none";
-    //   }
-    }
+/* reloadPage(): void{
+    window.location.reload();} */
+ 
+ }
     
